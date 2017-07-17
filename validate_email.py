@@ -132,7 +132,7 @@ def validate_email(email, check_mx=False, verify=False, debug=False, smtp_timeou
                                 'have installed pyDNS python package')
             hostname = email[email.find('@') + 1:]
             mx_hosts = get_mx_ip(hostname)
-            if mx_hosts is None:
+            if mx_hosts is None or len(mx_hosts) == 0:
                 return False
             for mx in mx_hosts:
                 try:
